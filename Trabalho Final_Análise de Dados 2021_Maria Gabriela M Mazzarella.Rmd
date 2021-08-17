@@ -1,0 +1,683 @@
+---
+title: "Trabalho Final - Maria Gabriela Mendonca Mazzarella"
+author: "Maria Gabriela Mendonça Mazzarella"
+date: "22/07/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F, erro = F)
+```
+
+
+### Aprovação de processos de integração regional entre os países do Mercosul
+
+A aprovação de processos de integração regional nos países do Mercosul entre 2015 e 2018
+Na segunda metade do século XX, os países da América Latina passaram por processos de redemocratização, com isso os arranjos das relações entre os países se modificaram. Além disso, na década de 1990, no momento pós-Guerra Fria, houve o ressurgimento do regionalismo na política mundial (HURRELL, 1995). Estes acontecimentos contribuíram significativamente para os processos de integração regional, principalmente no Cone Sul. Devido a esta série de eventos, houve espaço para o surgimento do Mercado Comum do Sul – Mercosul em 1991, quando foi assinado o Tratado de Assunção. 
+
+Em 2021, o Mercosul completa 30 anos e a sua implementação foi um marco importante para o processo de integração regional da América do Sul, trazendo junto ao seu desenvolvimento uma série de mudanças que acompanham os países partes, que atualmente são Argentina, Brasil, Paraguai e Uruguai. Os demais países da América do Sul são países associados, que de alguma forma são membros da Associação Latino-Americana de Integração – ALADI, com os quais o MERCOSUL subscreve acordos de livre comércio, ou que também celebre acordos com amparo no artigo 25 do Tratado de Montevidéu de 1980 (MERCOSUR, 2021).
+
+O Mercosul tenta instituir um mercado comum na América do Sul, com incentivos fiscais, facilidades intrabloco, acordos internacionais, cooperação e entre outros (MERCOSUR, 2021). De acordo com Almeida (2002), “a realidade sociológica e o alcance efetivo do Mercosul na geoeconomia e na história política recente da região extrapolam a simples área coberta pelo território combinado dos quatro membros originais”. Ou seja, o Mercosul traz impactos para a América do Sul como um todo, seja econômica, política ou socialmente. Com isso, há várias finalidades de acordo com os objetivos de criação e os objetivos dos membros de um bloco regional. Visto isso, os processos de integração regional são significativos para a vida do cidadão comum. Tendo isso os diversos impactos resultantes disso, a população tende a apoiar a integração após mais de duas décadas de criação do bloco?
+
+Antes de dar prosseguimento ao que será levantado ao longo deste trabalho, ressalta-se que estes processos são complexos e exige flexibilidade e adaptação por parte dos países membros para lidar com as conjunturas que enlaçam a cooperação, os acordos em conjunto e as possíveis crises econômicas, sociais e até mesmo institucionais que os países parte podem enfrentar.
+
+Dessa forma, é utilizado o survey do latinobarometro, com o fim de compreender como se dá a aprovação da população frente os processos de integração. Com isto surgem perguntas-chave que ajudarão a selecionar as variáveis para a pesquisa. Estas são: as pessoas apoiam a integração de seu país com outros? Se sim, em qual grau? Qual a influência da satisfação com as instituições democráticas para a aprovação? A idade pode se uma variável interessante para compreender o apoio ou não? Ou seja, como a população mais velha e mais nova tende a aceitar? A renda, a escolaridade, o sexo, a raça do respondente tem ligação com o apoio ou a falta dele? 
+
+Visto a importância que a percepção dos latino-americanos sobre a democracia em seus países, este trabalho coloca esta variável com uma possível variável que seja capaz de inverter o questionamento levantado sobre a integração, suscitando se as instituições democráticas influenciam na aprovação de processos de integração regional entre os Estados Partes do Mercosul ao longo da formação do bloco. Entretanto, este trabalho foca em colocar em evidência e como variável dependente o apoio. Caso fosse modificado, o objeto de pesquisa perderia o sentido de ser, abrindo espaço para discutir sobre a democracia na América do Sul.
+
+Os dados a serem analisados são de 2018, com o total de 4,804 respondentes dos quatro países parte do Mercosul. Sendo assim, Brasil, Uruguai e Paraguai têm cada um 1,200 respondentes e a Argentina 1,204. 
+
+# Por que esta pesquisa é interessante e relevante? 
+
+Analisar como está a aprovação de processo de integração regional é importante para compreender se os objetivos do bloco estão de fato chegando aos cidadãos comuns e como estes recepcionam as mudanças percebidas. Além disso, leva o questionamento: o que leva a estes respondentes acharem ou não que este processo é positivo? Isto está ligado às instituições e a democracia de cada país? Até mesmo o fato dos respondentes não saberem do que se trata uma integração é relevante. 
+
+# Qual é a teoria e a relação causal teórica?
+Tomando como base as três estratégias para desenvolver uma nova teoria de Kellstedt e Whitten (2018), neste caso a que melhor se aplica é a de Y explicado por um novo X. Ou seja, a teoria deste trabalho é a e que o apoio a integração regional pode ser explicado pelo grau de satisfação que os cidadãos tem com a democracia de seus países.E isto pode ter a influência de diversas outras variáveis, como idade, renda, escolaridade e raça, por exemplo. Portanto, quanto maior o grau de satisfação dos respondentes, maior o seu apoio a integração. 
+
+# Qual é a teoria causal que conecta a variável independente a variável dependente?
+Quanto maior o grau de satisfação democrática, maior o apoio à integração regional
+
+# Por que é importante utilizar as outras variáveis independentes para avaliar essa causalidade e relação entre variáveis?
+Outras variáveis independentes serão utilizadas para o efeito de compreender quais são os outros fatores que colaboram ou não para o entendimento da relação de X e Y, ou seja, se há ligação ou não com o apoio a integração.
+
+ 
+Visto isso, como as perguntas propostas acima se transformarão em variáveis empíricas? 
+
+# Banco de dados e manipulação de variáveis
+
+Tendo em vista principalmente que para este trabalho é utilizado um survey, devemos chamar a atenção para questão da operacionalização das variáveis, como devemos medi-las ao longo do trabalho. Isto acontece porque lidamos com as respostas de diversos indivíduos, dentro de um período de tempo, em que podem mudar de opinião com certa frequência. Como os autores, Kellsdedt e Whitten (2018) chamam atenção, o ser humano é um objeto inerentemente difícil de prever. 
+
+
+```{r}
+setwd("C:\\Users\\GABY\\Desktop\\ESTUDOS\\1. Mestrado\\2021.1\\2. Análise de Dados - Rodrigo M\\Trabalho final")
+
+
+banco <- Latinobarometro_2018_Esp_R_v20190303
+
+library(poliscidata)
+library(tidyverse)
+library(sjPlot)
+library(moderndive)
+library(dplyr)
+library(car)
+library(olsrr)
+library(haven)
+
+```
+
+Primeiramente um banco é criado com os dados referentes ao anos de  2018 que foram coletados do site latinobarometro. Então são selecionadas as variáveis que serão trabalhadas ao longo da pesquisa, que são: P13STGBS.A, P22ST, P39ST.A, S6, REEDUC.1, S26, REEDAD, SEXO, S13B, IDENPA. 
+
+Para operacionalização os conceitos teóricos em variáveis empíricas, as variáveis serão trabalhadas da seguinte maneira: 
+
+1- o banco criado terá suas variáveis renomeadas (lebels) para facilitar a visualização e interpretação. 
+P13STGBS.A - satisfacao, 
+P22ST - ideologia, 
+P39ST.A - apoio_integracao, 
+S6 - raca, 
+REEDUC.1 - escolaridade, 
+S26 - renda, 
+REEDAD - idade, 
+SEXO - sexo, 
+S13B - lingua, 
+IDENPA - paises
+
+2- Vale ressaltar que ste survey trata as variáveis  em números, mesmo as variáveis que são categóricas, como Sexo e Língua. Por isso que também foi escolhido alterar de numérica para categórica, como veremos mais abaixo.
+À princípio, a variável apoio_integracao será transformada em variável categórica para melhor ser percebida ao longo dos gráficos e das análises. Importante salientar que ela ficará como contínua para ser feita a regressão ao final do trabalho. Além disso, as variáveis sexo, raça, língua e países serão transformadas em categóricas.
+
+A tradução de raça tentou ser a mais próxima do que vem a ser a tradução, no entanto, ressalta-se que pode ter variações mais amplas entre mestiço e pardo. As variáveis não foram combinadas/juntas, umas vez que podem alterar os resultados e devido as nomenclaturas e identificação de raça de cada país.
+
+3- Além disso, foi escolhido omitir variáveis NA, com o comando na.omit, e não excluir respostas como “não sabe/ não respondeu” uma vez que faz parte do trabalho também observar estas respostas e os seus impactos uma vez que a pesquisa se propõe a também conferir de forma menos direta se as pessoas compreendem ou se têm  percepção do que vem a ser a integração que seus países estão passando. 
+
+4- o nome do banco definitivo para se trabalhar é banco_mercosul
+
+
+```{r}
+
+banco1 <- banco %>%
+  select(P13STGBS.A , P22ST, P39ST.A, S6, REEDUC.1, S26, REEDAD, SEXO, S13B, IDENPA)%>%
+  rename(apoio_integracao = P39ST.A,
+         satisfacao = P13STGBS.A,
+         ideologia = P22ST, 
+         raca = S6,
+         escolaridade = REEDUC.1, 
+         renda = S26,
+         idade = REEDAD,
+         sexo = SEXO,
+         lingua = S13B,
+         paises = IDENPA) %>%
+   mutate(apoio_integracao = case_when(apoio_integracao == 1 ~ "Muito a favor",
+                                       apoio_integracao == 2 ~ "Algo a favor",
+                                       apoio_integracao == 3 ~ "Algo contra",
+                                       apoio_integracao == 4 ~ "Muito contra",
+                                       apoio_integracao == -1 ~ "Não sabe",
+                                       apoio_integracao == -4 ~ "Não respondeu"),
+          sexo =  case_when(sexo == 1 ~ "masculino",
+                       sexo == 2 ~ "feminino",
+                       sexo == -2 ~ "não respondeu"),
+         raca = case_when(raca == 1 ~ "asiatico",
+                       raca == 2 ~ "negro",
+                       raca == 3 ~ "indigena",
+                       raca == 4 ~ "mestico",
+                       raca == 5 ~ "pardo",
+                       raca == 6 ~ "branco",
+                       raca == 7 ~ "outro",
+                       raca == -1 ~ "Não sabe",
+                       raca == -2 ~ "Sem resposta",
+                       raca == -4 ~ "Não respondeu"),
+         lingua =  case_when(lingua == 1 ~ "espanhol",
+                       lingua == 2 ~ "portugues",
+                       lingua == 3 ~ "indigena",
+                       lingua == 4 ~ "outra"),
+         paises = case_when(paises == 32 ~ "argentina",
+                            paises == 76 ~ "brasil",
+                            paises == 600 ~ "paraguai",
+                            paises == 858 ~ "uruguai"))
+
+glimpse(banco1)
+
+banco_mercosul <- na.omit(banco1)
+glimpse(banco_mercosul)
+
+```
+Após os passos descritos acima, o banco_mercosul passa a ter 4.804 observações de 10 variáveis. 
+
+Outros pontos importantes para ressaltar antes de trabalhar as variáveis:
+- Confiabilidade:  espera-se que quanto maior o X, maior o Y. No caso, que a variável dependente (apoio_integracao) aumente junto com a variável independente (satisfacao).
+
+- Validade: as associações têm validade, ou seja, quando é possível fazê-las, se há confiança para isso. Esta medida é a mais importante, uma vez que mesmo com confiabilidade, se não temos validade, não podemos avaliar teorias causais. 
+
+- A forma de medir essas variaveis: Primeiramente seria os gráficos univariados, seguido de testes de correlação para conferir o p valor e o nível de confiança, por exemplo, e depois os gráficos bivariados.
+
+
+- Elaboração de hipóteses
+O que se espera observar caso a teoria esteja certa: que haja uma ligação mais direta de apoio aos processos de integração regional à medida que os cidadãos sentem maior segurança institucional e democrática. Neste caso, o novo X explica o Y.
+
+- Estabelecendo o tipo de relação esperada teoricamente entre as variáveis operacionalizadas:
+1. Positiva
+- Apoio e Satisfação: quanto maior a satisfação com a democracia, maiores as chances de apoiar;
+- Apoio e Ideologia: quanto mais ao centro, maior o apoio;
+- Apoio e Renda: Maior apoio entre as classes intermediárias;
+- Apoio e Idade: Maior aprovação entre a população mais jovem;
+- Apoio e Escolaridade: as pessoas maior escolaridade tendem a apoiar mais;
+- Apoio e Raça: maior apoio entre os brancos;
+- Apoio e Sexo: Maior apoio entre os homens;
+- Apoio e Língua: maior apoio entre os que tem o espanhol como primeira língua;
+
+
+2. Negativa
+- Apoio e Satisfação: quanto menor a satisfação com a democracia do respondente, menor a possibilidade de apoiar os processos de integração.
+- Apoio e Ideologia: quanto mais nas extremidades do espectro esquerda-direita estiver o respondente, menor a possibilidade de apoiar os processos de integração.
+- Apoio e Renda: quanto menor a idade do respondente, menor a possibilidade de apoiar os processos de integração.
+- Apoio e Idade:quanto maior a idade do respondente, menor a possibilidade de apoiar os processos de integração. Isso pode ser negativo na hora de observar aspectos mais gerais do trabalho, podendo até vir a ser uma variável omitida.
+- Apoio e Escolaridade: quanto menor a escolaridade do respondente, menor a possibilidade de apoiar os processos de integração.
+- Apoio e Raça: menor a possibilidade de ter apoio de 'mestiços' os processos de integração.
+- Apoio e Sexo: menor possibilidade de apoio das mulheres.
+
+Visto isso, podemos fazer o seguinte esquema "de teoria à hipóteses" semelhante a figura 1.2 do livro (pagina 10).
+
+  Confiança institucional ----------------------------------------- Aceitação de cooperação
+  |                         maior confiança causa maior aceitação             |
+  |                                                                           |
+  |                                                                           |
+  |                                                                           |
+  |                                                                           |
+  |                                                                           |
+  |                                                                           |
+  |                                                                           |
+  Permanência de         ------------------------------------------ Melhora socioeconômica
+  instituições democráticas   manutenção que eleva confiança
+
+
+##Descrição e gráficos das variáveis 
+
+#Variável Dependente - Apoio (apoio_integracao):
+Para melhor entendimento dessa variável, nessa parte do trabalho, ela foi transformada primeiramente em uma variável categórica para ser possível ter uma melhor compreensão de como as respostas estão distribuídas no gráfico abaixo. No entanto, depois, para fins de fazer as regressões, elas voltarão a ser numéricas. A partir desse momento, os valores atribuídos são lidos da seguinte forma:
+ 1.Muito a favor; 
+ 2.Algo/pouco a favor; 
+ 3.Algo/pouco contra; 
+ 4.Muito contra 
+ -1.Não sabe, não respondeu;
+ -4.Não perguntado.
+
+No gráfico abaixo, só foram eliminadas as respostas -4. 
+
+```{r}
+ggplot(banco_mercosul, aes(apoio_integracao)) + geom_bar()
+
+```
+Observando isoladamente o gráfico da variável apoio_integracao, percebe-se que mais de 2,250 entrevistados têm algo a favor ao apoio e mais de 1000 têm muito a favor em 2018. Além disso, a quantidade de pessoas que tem algo contra e não sabem responder é bem próxima e o menor número de pessoas corresponde a aqueles que são muito contra a integração. A partir disso, será mantida na pesquisa os dados a respeito daqueles que não sabem, uma vez que pode se tornar um dado relevante mais adiante, o que poderá ser visto nos testes ao londo do trablho. Portanto, observando a variável de apoio, observa-se que mais da metade dos respondentes são a favor da integração regional.
+
+
+#Variáveis independentes
+1. Satisfação com a democracia (satisfacao) - A principal 
+
+Está é a principal variável independente, tendo em vista a pergunta de pesquisa. Os seus valores são os seguintes:
+1.Muito satisfeito;
+2.Pouco satisfeito; 
+3.Não muito satisfeito;
+4.Nada satisfeito; 
+-1-.Não sabe; 
+-2-.Não respondeu;
+-3-.Não se aplica; 
+-4-. Não perguntada
+
+
+```{r}
+ggplot(banco_mercosul, aes(satisfacao)) + 
+  geom_histogram()
+
+
+```
+O histograma acima mostra que a maioria respondeu que não está muito satisfeita com a democracia em seu país. Visto isso, será que está variável está ligada com o apoio a integração ou pouco ou nada interfere nesse ponto? Além disso, o segundo maior número de respostas aponta que cerca de 1200 estão nada satisfeitos com a democracia. Em contra partida, diferente do gráfico da variável apoio, neste temos poucas pessoas que não responderam a esta pergunta.
+
+
+2. Ideologia (ideologia):
+
+Esta variável pode ser importante para observar se a ideologia política impacta no apoio ou não ao processo de integração. Inclusive esta pode ser um novo X, caso a teoria acerca da satisfação democrática não tenha uma correlação relevante e também se a ideologia impactar mais os resultados de modo significativo a variável dependente. 
+
+No survey, a pergunta feita é sobre qual a posição do respondente entre a escala direita e direita do espectro político. 
+0. significa que se identifica com a esquerda, 10 com a direita. Também tem os seguintes valores e significados: 
+-1. não sabe; 
+-2. não respondeu/se recusou; 
+-3. não aplicável;  
+-4. não respondeu; 
+-6. nada. 
+
+```{r}
+ggplot(banco_mercosul, aes(ideologia)) +
+geom_bar()
+
+
+```
+Mais de 1500 pessoas estão no centro do espectro direita-esquerda, sendo a maioria. Em seguida temos os que não se encaixam em nenhuma das ideologias, depois os que são os que mais se identificam com a esquerda e logo após os que se identificam a direita, entretanto os números de cada não chegam a 500 respondentes. 
+
+
+3. Raça (raca)
+
+Esta variável diz respeito ao que os respondentes declaram sobre a etnia/raça a que mais se identifica e/ou pertence. Como os quatro países possuem uma grande diversidade étnica, essa variável é importante para se trabalhar, visto que este aspecto pode influenciar o apoio.
+Esta variável foi modificada de númerica para variável para melhor compreender como ela se comporta e as suas relações com as demais. Os valores originais do survey são os seguintes:
+1.- Asiático;
+2.- Negro;
+3.- Indigena; 
+4.- Mestiço; 
+5.- Pardo 
+6.- Branco;
+7.- Outra 
+-1.- Não sabe;
+-2.- Não respondeu;
+-4.- Não questionado.
+
+```{r}
+ggplot(banco_mercosul, aes(raca)) +
+geom_bar()
+
+
+```
+Cerca de 2000 pessoas são brancas, seguidas por mestiços, aqueles que não sabem, negros, outros, indígenas, pardos, os que não responderam e asiáticos, nessa ordem. 
+
+
+4. Escolaridade (escolaridade)
+
+Para saber o grau de escolaridade dos entrevistados, temos os seguintes valores da variável: 
+1.- Fundamental ou menos;
+2.- Ensino médio, técnico ou menos;
+3.- Superior ou mais.
+
+```{r}
+ggplot(banco_mercosul, aes(escolaridade)) +
+geom_bar()
+
+
+```
+A maior parte possui ensino médio ou menos e a menor parte tem ensino superior (pouco mais de 1000). Ou seja, cerca de 3,750 entrevistados possuem ensino médio ou menos. 
+
+5. Renda (renda)
+
+Saber o nível socioeconômico é importante para saber se a população tende a apoiar mais ou menos de acordo com a sua renda e classe social e se esta variável traz impacto significativo. Nessa pergunta, foi pedido para os entrevistados classificarem como consideram que é a sua situação socioeconomica baseada na sua renda. Assim, ela está organizada da seguinte forma:
+1. - Muito boa
+2. - Boa
+3. - Médio/regular
+4. - Ruim
+5. - Muito ruim
+-2. - Não respondida
+-4. - Não perguntada
+
+```{r}
+ggplot(banco_mercosul, aes(renda)) + geom_bar()
+
+
+```
+Mais de duas mil pessoas avaliam sua situação socioeconômica como boa, enquanto cerca de 1600 responderam que é média, mais de 500, como muito boa e menos de 500 classificaram como ruim ou muito ruim. Aqui não foi levada em consideração os que não responderam a pergunta. 
+
+
+6. Idade (idade)
+
+Como os processos de integração se intensificaram a partir da década de 1990 na América do Sul, a variável de idade pode suscitar a hipótese de que há baixo apoio da integração por parte da população com mais de 60 anos e maior apoio entre os de 40 anos e menos, por exemplo. 
+A questão feita foi de quantos anos o entrevistado tem no momento da pesquisa. Assim está distribuido: 
+1.- de 16 a 25 anos;
+2.- 26 a 40 anos ;
+3.- 41 a 60 anos; 
+4.- 61+ anos
+
+
+```{r}
+ggplot(banco_mercosul, aes(idade)) + geom_bar()
+
+
+```
+Assim temos: quase 1500 têm de 26 a 40 anos; 1400 têm de 41 a 60 anos; mais de 900 têm de 16 a 25 anos; e um pouco mais de 700 têm 60 anos ou mais. 
+
+7. Sexo (sexo)
+
+Para saber o sexo/gênero do respondente, o survey tem os seguintes valores:
+1.- Masculino;
+2.- Feminino;
+-2-.- Não respondido
+
+Entretanto, as variáveis foram mudadas para categóricas e foi retirado o item -2 ao decorrer do deste trabalho. 
+
+```{r}
+ggplot(banco_mercosul, aes(sexo)) +
+geom_bar()
+
+
+```
+A maioria dos respondentesé do sexo feminino, um pouco mais de 2500 são mulheres, enquanto mais de 2250 são homens. 
+
+8. Língua (lingua)
+
+A maioria dos países da América do Sul tem como primeira língua o espanhol, além disso a região tem uma grande diversidade étnica que podem modificar esta variável. E isso reflete nos países que compõem o Mercosul, três têm o espanhol como língua materna e um tem o português, entretanto, os quatro países têm presença de etnias indígenas.
+Assim, o survey coloca as seguintes opções: 
+
+1.- Espanhol;
+2.- Português;
+3.- Indigena;
+4.- Outro;
+-2-. Não respondido;
+-4-. Não questionado
+
+Mais uma vez procurou-se modificar a variável para categórica.
+```{r}
+ggplot(banco_mercosul, aes(lingua)) +
+geom_bar()
+
+
+```
+Apesar do survey colocar a opção do respondente escolher outras opções além do poruguês e do espanhol, não houve respostas para a língua materna indígena/outra. Assim, mais de 3500 responderam que falam espanhol e 1200, português
+
+8. Países (paises)
+
+Esta variável será utilizada para a visualizar como estão distribuídos os respondentes e o apoioem cada país. A média de respondentes é de 1200 por país. O único que tem um pouco a mais é a Argentina, com 1204.
+
+```{r}
+ggplot(banco_mercosul, aes(paises)) +
+geom_bar()
+
+
+```
+
+##Testes de correlação
+
+Visto os gráficos de cada variável, faz-se necessário realizar os testes de hipótese adequados para saber se há correlação entre a variável dependentes e as independentes, bem como os gráficos bivariados.
+
+#Variável dependente (apoio_integracao) e Variável independente 1 (satisfacao).
+
+Aqui a variável apoio_integracao está como categórica, e a mesma possui mais de dois níveis, e independente 1 (satisfacao) está como continua. Dessa forma o teste aplicado é o anova e Tukey HSD (variável continua com categórica com mais de níveis).
+
+```{r}
+teste_anova <- aov(satisfacao ~ apoio_integracao, data = banco_mercosul)
+summary(teste_anova)
+
+TukeyHSD(teste_anova)
+```
+Nessa correlação, temos um bom intervalo de confiança e um p valor baixo, indicando que há confiança em rejeitar a hipótese nula de que a média desses dois agrupamentos possuem média semelhante. Além disso também indica que ambas possuem uma diferença estatisticamente interessante, consequentemente, temos uma associação entre as variáveis. 
+
+
+```{r}
+ggplot(banco_mercosul, aes(satisfacao , fill = apoio_integracao)) + 
+  geom_density(alpha = 0.3)
+```
+No gráfico acima mostra que os que tem algo a favor também se encontra pouco satisfeito com a democracia em seu país, enquanto os que tem algo muito contra a integração responde a um maior grau de nada satisfeito com a democracia. Ja os que tem algo muito a favor estão muito satisfeitos. 
+
+
+# apoio_integracao e ideologia
+
+Aqui a variável apoio_integracao está como categórica, e a mesma possui mais de dois níveis, e esta independente  (ideologia) está como continua. Dessa forma o teste aplicado é o anova e Tukey HSD. 
+
+```{r}
+teste_anova <- aov(ideologia ~ apoio_integracao, data = banco_mercosul)
+summary(teste_anova)
+
+TukeyHSD(teste_anova)
+```
+Nessa correlação, temos um bom intervalo de confiança e um p valor baixo, indicando que há confiança em rejeitar a hipótese nula de que a média desses dois agrupamentos possuem média semelhante. Além disso também indica que ambas possuem uma diferença estatisticamente interessante, consequentemente, temos uma associação entre as variáveis. 
+
+
+```{r}
+ggplot(banco_mercosul, aes(ideologia, fill = apoio_integracao)) +
+  geom_density(alpha = 0.3)
+```
+Nesse gráfico, quanto mais a esquerda (0) do espectro político, maior o número de pessoas que são contra o apoio a integração. Quanto mais ao centro (5), maior a possibilidade de ter algo a favor ou muito a favor. Quanto mais perto da direita (10) tem a possibilidade de ser muito a favor ou muito contra à integração regional. Além disso, aqueles que não sabem do que se trata também não se considera dentro de nenhuma parte do espectro político direita-esquerda.
+
+
+# apoio_integracao e raca
+
+Aqui a variável apoio_integracao está como categórica, e a mesma possui mais de dois níveis, e esta independente  (raca) está como categórica. Dessa forma o teste aplicado de Chi-Quadrado. 
+
+```{r}
+
+chisq.test(banco_mercosul$raca, banco_mercosul$apoio_integracao)
+
+
+```
+Nessa correlação, temos um alto valor de X quadrado e um p valor baixo, indicando que há confiança em rejeitar a hipótese nula de que a média desses dois agrupamentos possuem média semelhante. Além disso também indica que ambas possuem uma diferença estatisticamente interessante, consequentemente, temos uma associação entre as variáveis. 
+
+```{r}
+ggplot(banco_mercosul, aes(raca, fill = apoio_integracao)) + 
+  geom_bar(position = "fill")
+```
+Neste gráfico, todas as raças/etnias tem uma maior densidade em "algo a favor", seguida por "muito a favor". Menor parte dos entrevistados são muito contra. O menor número de pessoas que são muito contra é o de asiáticos. 
+
+
+# apoio_integracao e sexo
+Aqui a variável apoio_integracao está como categórica, e a mesma possui mais de dois níveis, e esta independente  (sexo) está como categórica. Dessa forma o teste aplicado é o Chi-Quadrado.
+
+```{r}
+
+chisq.test(banco_mercosul$sexo, banco_mercosul$apoio_integracao)
+
+```
+Nessa correlação, temos um alto valor de X quadrado e um p valor baixo, indicando que há confiança em rejeitar a hipótese nula de que a média desses dois agrupamentos possuem média semelhante. Além disso também indica que ambas possuem uma diferença estatisticamente interessante, consequentemente, temos uma associação entre as variáveis. 
+
+```{r}
+ggplot(banco_mercosul, aes(sexo, fill = apoio_integracao)) + 
+  geom_bar(position = "fill")
+```
+Nesse gráfico, os homens são mais "muito a favor" a integração do que as mulheres. Além disso, em ambos o menor número de respostas corresponde a "muito contra".
+
+# apoio_integracao e idade
+
+Aqui a variável apoio_integracao está como categórica, e a mesma possui mais de dois níveis, e esta independente  (idade) está como contínua. Dessa forma o teste aplicado é o anova e Tukey HSD. 
+
+```{r}
+
+teste_anova <- aov(idade ~ apoio_integracao, data = banco_mercosul)
+summary(teste_anova)
+
+TukeyHSD(teste_anova)
+
+```
+Nessa correlação, temos um bom intervalo de confiança e um p valor baixo, indicando que há confiança em rejeitar a hipótese nula de que a média desses dois agrupamentos possuem média semelhante. Além disso também indica que ambas possuem uma diferença estatisticamente interessante, consequentemente, temos uma associação entre as variáveis. 
+
+
+```{r}
+ggplot(banco_mercosul, aes(idade, fill = apoio_integracao)) + 
+  geom_bar(position = "fill")
+```
+A faixa etária que tem maior densidade em "algo a favor" é a de 16 a 25 anos. Das quatro faixas etárias, o que menos tem algo a favor é a de 61+.
+
+# apoio_integracao e lingua 
+Aqui a variável apoio_integracao está como categórica, e a mesma possui mais de dois níveis, e esta independente  (lingua) está como categórica. Dessa forma o teste aplicado é o Chi-Quadrado.
+
+```{r}
+chisq.test(banco_mercosul$lingua, banco_mercosul$apoio_integracao)
+
+```
+Nessa correlação, temos um alto valor de X quadrado e um p valor baixo, indicando que há confiança em rejeitar a hipótese nula de que a média desses dois agrupamentos possuem média semelhante. Além disso também indica que ambas possuem uma diferença estatisticamente interessante, consequentemente, temos uma associação entre as variáveis.
+
+```{r}
+ggplot(banco_mercosul, aes(lingua, fill = apoio_integracao)) + 
+  geom_bar(position = "fill")
+```
+Neste gráfico, o maior número de respondentes muito contra a integração são de língua portuguesa e o maior apoio é de quem tem o espanhol como língua materna. 
+# apoio_integracao e paises
+
+Aqui a variável apoio_integracao está como categórica, e a mesma possui mais de dois níveis, e esta independente  (lingua) está como categórica. Dessa forma o teste aplicado é o Chi-Quadrado.
+
+```{r}
+chisq.test(banco_mercosul$paises, banco_mercosul$apoio_integracao)
+
+```
+Nessa correlação, temos um alto valor de X quadrado e um p valor baixo, indicando que há confiança em rejeitar a hipótese nula de que a média desses dois agrupamentos possuem média semelhante. Além disso também indica que ambas possuem uma diferença estatisticamente interessante, consequentemente, temos uma associação entre as variáveis.
+
+
+
+```{r}
+ggplot(banco_mercosul, aes(paises, fill = apoio_integracao)) + 
+  geom_bar(position = "fill")
+```
+Entre os quatro países membros do Mercosul, o Brasil é o que tem maior quantidade de pessoas "muito contra" a integração e o Paraguai é o que tem esse número menor. Visto isso, abaixo é feito um teste com as variáveis de satisfação e país, para saber se há alguma relação entre o nível de ambas e se isto pode repercurtir no estudo.
+
+Teste de países e satisfação com a democracia 
+```{r}
+teste_anova <- aov(satisfacao ~ paises, data = banco_mercosul)
+
+summary(teste_anova)
+TukeyHSD(teste_anova)
+
+ggplot(banco_mercosul, aes(satisfacao, fill = paises)) +
+  geom_density(alpha = 0.3)
+```
+Nessa correlação, temos um alto valor de X quadrado e um p valor baixo, indicando que há confiança em rejeitar a hipótese nula de que a média desses dois agrupamentos possuem média semelhante. Além disso também indica que ambas possuem uma diferença estatisticamente interessante, consequentemente, temos uma associação entre as variáveis.
+
+Neste gráfico temos os brasileiros como os que estão mais "nada satisfeitos" seguido de "pouco satisfeitos", enquanto os uruguaios é o mais satisfeito com a democracia de seu país. 
+
+##Regressão 
+
+Para este trabalho foi escolhido fazer apenas uma regressão linear múltipla por atender melhor a pergunta da presente pesquisa, principalmente porque a variável dependente possui vários níveis.Para fazer a regressão, algumas variáveis independentes foram excluídas, uma vez que foram observados nos testes acima que outras são mais relevantes para a pergunta de pesquisa e apresentam valores mais significativos estatisticamente para observar na regressão. Assim, são excluídas as seguintes variáveis: paises, raca, escolaridade, lingua. 
+
+"paises": mesmo sendo uma relevante, neste ponto do estudo pretende-se compreender o apoio como um todo;
+"raca": 
+"escolaridade":
+"lingua": com os testes, percebeu-se que apenas constam portugues e espanhol como a língua materna escolhida pelos entevistados, além das respostas serem mais homogêneas
+
+Assim, farão parte da regressão: satisfacao, ideologia, raca, idade, renda.
+
+# Regressão múltipla
+
+Como testes anteriores com a variável independente como categórica mostraram que aconteciam erros na regressão, no próximo passo, apoio_integracao será usada como numérica.   
+
+```{r}
+banco1 <- banco %>%
+  select(P13STGBS.A , P22ST, P39ST.A, S6, REEDUC.1, S26, REEDAD, SEXO, S13B, IDENPA)%>%
+  rename(apoio_integracao = P39ST.A,
+         satisfacao = P13STGBS.A,
+         ideologia = P22ST, 
+         raca = S6,
+         escolaridade = REEDUC.1, 
+         renda = S26,
+         idade = REEDAD,
+         sexo = SEXO,
+         lingua = S13B,
+         paises = IDENPA) %>%
+  mutate(sexo =  case_when(sexo == 1 ~ "masculino",
+                           sexo == 2 ~ "feminino",
+                           sexo == -2 ~ "não respondeu"),
+         raca = case_when(raca == 1 ~ "asiatico",
+                          raca == 2 ~ "negro",
+                          raca == 3 ~ "indigena",
+                          raca == 4 ~ "mestico",
+                          raca == 5 ~ "pardo",
+                          raca == 6 ~ "branco",
+                          raca == 7 ~ "outro",
+                          raca == -1 ~ "Não sabe",
+                          raca == -2 ~ "Sem resposta",
+                          raca == -4 ~ "Não respondeu"),
+         lingua =  case_when(lingua == 1 ~ "espanhol",
+                             lingua == 2 ~ "portugues",
+                             lingua == 3 ~ "indigena",
+                             lingua == 4 ~ "outra"),
+         paises = case_when(paises == 32 ~ "argentina",
+                            paises == 76 ~ "brasil",
+                            paises == 600 ~ "paraguai",
+                            paises == 858 ~ "uruguai"))
+
+glimpse(banco1)
+
+banco_mercosul <- na.omit(banco1)
+glimpse(banco_mercosul)
+
+
+regressao <- lm(apoio_integracao ~ satisfacao + ideologia + idade + renda,
+                 data = banco_mercosul)
+summary(regressao)
+confint(regressao)
+
+```
+Interpretação dos coeficientes: 
+
+- satisfação:  esta é uma variável numérica portanto interpretamos que para o aumento em uma
+unidade na escala de satisfação é esperada uma mudança média de 0.12 no apoio a integração regional, controlando por todas as outras variáveis. O p-valor é significativo, dando-nos confiança em
+rejeitar a hipótese nula de que o valor deste coeficiente é igual a 0, ou seja, que não existiria associação
+entre satisfação e apoio a integração regional.
+
+- ideologia: esta é uma variável numérica portanto interpretamos que para o aumento em uma
+unidade na escala de ideologia é esperada uma mudança média de 0.02 no apoio a integração regional, controlando por todas as outras variáveis. O p-valor é significativo, dando-nos confiança em
+rejeitar a hipótese nula de que o valor deste coeficiente é igual a 0, ou seja, que não existiria associação
+entre ideologia e apoio a integração regional.
+
+- idade: esta é uma variável numérica portanto interpretamos que para o aumento em uma
+unidade na escala de idade é esperada uma mudança média de -0.09 no apoio a integração regional, controlando por todas as outras variáveis. O p-valor é significativo, dando-nos confiança em
+rejeitar a hipótese nula de que o valor deste coeficiente é igual a 0, ou seja, que não existiria associação
+entre idade e apoio a integração regional.
+
+- renda: esta é uma variável numérica portanto interpretamos que para o aumento em uma
+unidade na escala de renda é esperada uma mudança média de -0.04 no apoio a integração regional, controlando por todas as outras variáveis. O p-valor é significativo, dando-nos confiança em
+rejeitar a hipótese nula de que o valor deste coeficiente é igual a 0, ou seja, que não existiria associação
+entre renda e apoio a integração regional.
+
+- Intercepto: o valor deste coeficiente é o valor médio esperado da variável dependente quanto todas as
+outras variáveis tiverem valor 0. Portanto, esperamos que os respondentes tenham em média afinidade
+de 1.59 com apoio a integração regional quando o nível de satisfação, ideologia, idade e renda forem 0.
+
+R-squared: de acordo com Kellsdet e Whitten (2018), o valor do R quadrado indica a proporção de variação da variável dependente que pe contada pelo modelo e que a sua estatística varia entre 0 e 1. Além disso, tende a ter um valor alto quando tem multicolinearidade e não é possível encontrar significância estatística. Acima o R quadrado da regressão é 0.02827, ou seja, temos um valor baixo. 
+
+
+Para melhor representar os valores dos coeficientes, seus intervalos de confiança e a significância estatística de cada uma das variáveis, foi escolhido fazer uma representação gráfica padronizada.
+
+```{r}
+plot_model(regressao, type = "std")
+
+```
+Neste caso, nenhum intervalo de confiança dos coeficientes cruza a linha vertical do valor 0, ou seja, todos tem significância estatística. Apesar de estar perto da linha de valor 0, a variável renda é significante. 
+
+##Interação entre as variáveis:
+```{r}
+
+plot_model(regressao, type = "pred", 
+           terms = c("satisfacao", "ideologia"), 
+           data = banco_mercosul)
+
+```
+Como a variável ideologia é numérica/contínua, automaticamente são feitos 3 agrupamentos: um com valor
+médio de ideologia, um agrupamento com um desvio padrão a mais de ideologia e outro com
+um desvio padrão abaixo de ideologia.
+Podemos perceber que os agrupamentos pouco diferem entre si em qualquer nível do espectro esquerda-direita. Pode-se observar que a diferença entre os dois agrupamentos só é significativa nos valores intermediários do da grau de satisfação com a democracia, já que nas pontas os intervalos se sobrepõem.
+
+
+```{r}
+
+plot_model(regressao, type = "pred", 
+           terms = c("renda", "ideologia"), 
+           data = banco_mercosul)
+
+```
+Como a variável ideologia. é numérica/contínua, automaticamente são feitos 3 agrupamentos: um com valor
+médio de ideologia., um agrupamento com um desvio padrão a mais de ideologia. e outro com
+um desvio padrão abaixo de ideologia. 
+Podemos perceber que os agrupamentos pouco diferem entre si em qualquer nível do espectro esquerda-direita. Além disso, pode-se observar que a diferença entre os dois agrupamentos só é significativa nos valores intermediários do nível socioeconomico dos entrevistados, já que nas pontas os intervalos se sobrepõem.
+
+
+```{r}
+
+plot_model(regressao, type = "pred", 
+           terms = c("idade", "ideologia"), 
+           data = banco_mercosul)
+
+```
+
+Como a variável idade é numérica/contínua, automaticamente são feitos 3 agrupamentos: um com valor
+médio de ideologia., um agrupamento com um desvio padrão a mais de ideologia. e outro com
+um desvio padrão abaixo de ideologia.
+
+Assim como nas interações anteriores, pode-se observar que a diferença entre os três agrupamentos só é significativa nos valores intermediários da idade, já que nas pontas os intervalos se sobrepõem.
+
+
+#Avaliação dos 4 hurdles
+
+
+- Existe um mecanismo causal convincente que conecta X a Y? 
+A variável dependente admite diversas interpretações e associação com muitas outras independentes, mas podemos ressaltar a idade e a 
+
+- Podemos descartar a possibilidade de que é Y que causa X? 
+Sim, uma vez que y que ajuda a causar x, não o contrário. 
+
+- Existe covariação entre x e Y? 
+Sim. Com os testes feitos, pôde ser observado que x e y são interrelacionadas. Isto se evidencia na regressão linear feita. 
+
+- Foi possível controlar pelas possíveis variáveis Z que podem alterar a relação entre X e Y? 
+Sim, apesar de ser possível alterar a relação entre X e Y, o Z não interferiu na relação.
+
+Neste estudo não foram feitos para conferir se há a presença de Outliers e multicolinearidade e até mesmo conferir os pressupostos de regressão por alguns fatores: o que foi feito até a regressão já auxilia na compreensão do que foi proposto pela pergunta de pesquisa, mas isso não significa que não seria importante fazer. Porém, como este estudo tem apenas o intuito de contribuir para colocar em prática aspectos vistos em sala de aula para operacionalizar as variáveis e para finalizar a disciplina, estes pontos citados não foram feitos.
+
+Contudo, a pesquisa dá um passo a mais para o desenvolvimento teórico ao evidenciar que a variável independente tem impacto significativo na variável dependente, mas principalmente por colocar as outras três variáveis como significativas para a relação proposta na teoria causal. 
